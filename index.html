@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="dist/style.css">
+
+  <title>HARITAM</title>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase-firestore.js"></script>
+
+  <!-- Google Map key:AIzaSyAh-3vnlSoEldRmuZ2Ed7tLIP5Xu7Rmjis -dene -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR9BxloT6YZERaVxmLCL8xgeRAvxdTllk&libraries=places&libraries=drawing&callback=startApp"></script>
+  <!--key yok dene: <script type="text/javascript"
+  src="http://maps.google.com/maps/api/js?sensor=false&libraries=drawing"></script> -->
+</head>
+
+<body>
+  <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
+  <div id="map-wrap">
+    <div id="map"></div>
+  </div>
+
+  <div id="container-detail" class="box-hidden">
+    seçim detayı
+  </div>
+
+  <div id="container-shape-list" style="display: none;">
+    <!-- shape list render -->
+  </div>
+
+  <div id="container-shape-modal">
+    <div id="container-shape-edit">
+      Seçili Şekli:<br>
+      <button id="btn-shape-edit-open" onclick="shapeEditDetailOpen()">Ekle</button>
+      <button id="btn-shape-edit-close" onclick="deleteShape()">Kapat</button>
+    </div>
+    <div id="container-shape-edit-detail" style="display: none;">
+      <input id="input-shape-name" type="text" placeholder="Şekil adı giriniz" />
+      <input id="input-shape-desc" type="textarea" placeholder="Şekil için açıklama..." />
+      <button onclick="saveShapeDBCancel()">&laquo; İptal</button>
+      <button id="btn-shape-db" onclick="saveShapeDB()">Kaydet</button>
+      <button id="btn-shape-db-update" onclick="saveShapeDB()">Güncelle</button>
+      <button id="btn-shape-db-delete" onclick="shapeDBDelete()" style="float:right;">Kalıcı Sil</button>
+    </div>
+  </div>
+
+  <!-- Includes -->
+  <script src="dist/main.js"></script>
+  <script src="dist/mapCtrl.js"></script>
+  <script src="dist/models.js"></script>
+  <script src="dist/db-firebase.js"></script>
+</body>
+
+</html>
